@@ -6,7 +6,7 @@
 if grep -Fxq "ro.sf.lcd_density=320" /system/build.prop 
 then 
     mount -o remount,rw /system
-    sed s/ro.sf.lcd_density=320/ro.sf.lcd_density=240/ < /system/build.prop > /system/build.prop.new
+    sed s/ro.sf.lcd_density=480/ro.sf.lcd_density=445/ < /system/build.prop > /system/build.prop.new
     mv /system/build.prop.new /system/build.prop
     mount -o remount,ro /system
     reboot
