@@ -1,9 +1,21 @@
 #!/system/bin/sh
 # pulser@xda-developers.com
 # Changes the DPI of CM, persisting through nightly installs
-# Changes from 320 dpi to 240 dpi
+# Changes from 320 dpi to 240 dpi for ??unknow devices?? disabled because it will end up at 182 dpi
+# Changes from 480 dpi to 445 dpi for Nexus 5 (Optimal display DPI)
+# Changes from 240 dpi to 182 dpi for Galaxy S (I9000, SlimBean DPI)
+# Changes from 160 dpi to 140 dpi for Galaxy Ace (S5830d)
 
-if grep -Fxq "ro.sf.lcd_density=320" /system/build.prop 
+if grep -Fxq "ro.sf.lcd_density=0000" /system/build.prop 
+then 
+    mount -o remount,rw /system
+    sed s/ro.sf.lcd_density=320/ro.sf.lcd_density=240/ < /system/build.prop > /system/build.prop.new
+    mv /system/build.prop.new /system/build.prop
+    mount -o remount,ro /system
+    reboot
+fi
+
+if grep -Fxq "ro.sf.lcd_density=480" /system/build.prop 
 then 
     mount -o remount,rw /system
     sed s/ro.sf.lcd_density=480/ro.sf.lcd_density=445/ < /system/build.prop > /system/build.prop.new
@@ -11,3 +23,22 @@ then
     mount -o remount,ro /system
     reboot
 fi
+
+if grep -Fxq "ro.sf.lcd_density=240" /system/build.prop 
+then 
+    mount -o remount,rw /system
+    sed s/ro.sf.lcd_density=240/ro.sf.lcd_density=182/ < /system/build.prop > /system/build.prop.new
+    mv /system/build.prop.new /system/build.prop
+    mount -o remount,ro /system
+    reboot
+fi
+
+if grep -Fxq "ro.sf.lcd_density=160" /system/build.prop 
+then 
+    mount -o remount,rw /system
+    sed s/ro.sf.lcd_density=160/ro.sf.lcd_density=140/ < /system/build.prop > /system/build.prop.new
+    mv /system/build.prop.new /system/build.prop
+    mount -o remount,ro /system
+    reboot
+fi
+
