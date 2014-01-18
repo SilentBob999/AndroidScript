@@ -12,10 +12,10 @@
 APP_PROCESS=bin/app_process
 
 case "$1" in
-  backup)
+ backup)
     [ -e "$S/${APP_PROCESS}.orig" ] && backup_file "$S/${APP_PROCESS}"
-  ;;
-  restore)
+    ;;
+ restore)
     if [ -e "$C/$S/${APP_PROCESS}" ]; then
       echo "Backuping new $S/${APP_PROCESS} as $S/${APP_PROCESS}.orig"
       cp -p "$S/${APP_PROCESS}" "$S/${APP_PROCESS}.orig"
@@ -25,17 +25,17 @@ case "$1" in
       echo " - Replace $S/${APP_PROCESS} with $S/${APP_PROCESS}.orig"
       echo " - Remove $S/${APP_PROCESS} and reinstall your ROM"
     fi
-  ;;
-  pre-backup)
-    # Stub
-  ;;
+   ;;
+ pre-backup)
+ # Stub
+   ;;
   post-backup)
-    # Stub
-  ;;
-  pre-restore)
-    # Stub
-  ;;
-  post-restore)
-    # Stub
-  ;;
+  # Stub
+;;
+pre-restore)
+# Stub
+;;
+post-restore)
+# Stub
+;;
 esac
